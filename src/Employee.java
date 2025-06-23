@@ -7,7 +7,8 @@ public class Employee {
     private int department;
     private int salary;
 
-    private static int id = 0;
+    private static int idCounter = 0;
+    private int id;
 
     public Employee(String name, String surname, String middleName, int department, int salary) {
         this.name = name;
@@ -18,10 +19,9 @@ public class Employee {
         this.assignId();
     }
 
-    public int assignId() {
-        id += 1;
-        this.id = id;
-        return this.id;
+    public void assignId() {
+        idCounter++;
+        this.id = idCounter;
     }
 
     public String getName() {
@@ -70,5 +70,8 @@ public class Employee {
         return java.util.Objects.hash(id);
     }
 
+    @Override public String toString() {
+        return surname + " " + name + " " + middleName + " Отдел:" + department +" " + "Оклад:" + salary;
+    }
 
 }
